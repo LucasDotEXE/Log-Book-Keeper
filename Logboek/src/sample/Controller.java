@@ -34,7 +34,8 @@ public class Controller {
         VBox dialogVbox = new VBox(20);
         String info = "###ERROR WHILE LOADING INFO###";
         try {
-            Scanner scanner = new Scanner(new File("D:\\Git Kraken Repo's\\Own Project\\Log Book\\Log Book Keeper\\Logboek\\Rec\\TextBasedFiles\\About_This_App"));
+            System.out.println(System.getProperty("user.dir") + "\\res\\TextBasedFiles\\AboutThisApp");
+            Scanner scanner = new Scanner(new File(System.getProperty("user.dir") + "\\res\\TextBasedFiles\\AboutThisApp"));
             StringBuilder loadedInfo = new StringBuilder();
             while (scanner.hasNextLine()) {
                 loadedInfo.append(scanner.nextLine() + "\n");
