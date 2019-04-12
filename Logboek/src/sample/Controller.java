@@ -2,6 +2,8 @@ package sample;
 
 import javafx.event.ActionEvent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
 import javafx.scene.control.MenuItem;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.VBox;
@@ -11,8 +13,6 @@ import javafx.stage.Stage;
 
 import java.io.File;
 import java.io.FileNotFoundException;
-import java.io.FileReader;
-import java.io.IOException;
 import java.util.Scanner;
 
 public class Controller {
@@ -21,7 +21,8 @@ public class Controller {
     public AnchorPane leftBar;
     public AnchorPane centerBar;
     public AnchorPane rightBar;
-
+    public Button addProjectButton;
+    public Button addSessionButton;
 
 
     public Controller() {
@@ -50,5 +51,14 @@ public class Controller {
         Scene dialogScene = new Scene(dialogVbox, 500, 200);
         dialog.setScene(dialogScene);
         dialog.show();
+    }
+
+
+    public void addProject(ActionEvent actionEvent) {
+
+    }
+
+    public void addSesion(ActionEvent actionEvent) {
+
     }
 }

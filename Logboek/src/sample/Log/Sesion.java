@@ -8,6 +8,8 @@ public class Sesion {
     private String name;
     private String discription;
 
+
+
     public Sesion(String name) {
         this.start = LocalDateTime.now();
         this.name = name;
