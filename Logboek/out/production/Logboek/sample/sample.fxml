@@ -1,5 +1,4 @@
 <?xml version="1.0" encoding="UTF-8"?>
-
 <?import javafx.scene.control.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.Font?>
@@ -22,11 +21,6 @@
             <MenuItem mnemonicParsing="false" text="Quit" />
           </items>
         </Menu>
-        <!--<Menu mnemonicParsing="false" text="Project">-->
-          <!--<items>-->
-            <!--<MenuItem mnemonicParsing="false" text="add new" fx:id="addProject" onAction="#addProject"/>-->
-          <!--</items>-->
-        <!--</Menu>-->
         <Menu mnemonicParsing="false" text="Help">
           <items>
             <MenuItem mnemonicParsing="false" text="About MyLogBookApp" fx:id="aboutAppButton" onAction="#showAboutApp" />
@@ -36,9 +30,9 @@
     </MenuBar>
     <SplitPane dividerPositions="0.2505567928730512, 0.7505567928730512" focusTraversable="true" VBox.vgrow="ALWAYS">
       <items>
-        <AnchorPane fx:id="leftBar">
+        <AnchorPane fx:id="projectScreen">
           <children>
-            <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" minWidth="60.0" style="&#10;" textAlignment="CENTER" text="Projects">
+            <Label alignment="CENTER" layoutX="14.0" layoutY="14.0" minWidth="60.0" style="&#10;" textAlignment="CENTER" text="Projects" fx:id="projectLabel">
               <font>
                 <Font size="18.0" fx:id="x1" />
               </font>
@@ -49,16 +43,18 @@
         </AnchorPane>
         <ScrollPane>
           <content>
-            <AnchorPane fx:id="centerBar" prefHeight="545.0" prefWidth="430.0">
+            <AnchorPane fx:id="sessionScreen" prefHeight="545.0" prefWidth="430.0">
               <children>
-                <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Sessions" textAlignment="CENTER"/>
+                <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Sessions" minWidth="60.0" textAlignment="CENTER" fx:id="sessionLabel"/>
+                <Button alignment="CENTER" layoutX="86.0" layoutY="14.0" minWidth="40.0" style="&#10;"
+                        textAlignment="CENTER" text="Add" onAction="#addSession" fx:id="addSessionButton"/>
               </children>
             </AnchorPane>
           </content>
         </ScrollPane>
-        <AnchorPane fx:id="rightBar">
+        <AnchorPane fx:id="detailScreen">
           <children>
-            <Label alignment="CENTER" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Details" textAlignment="CENTER"/>
+            <Label alignment="CENTER" minWidth="60.0" font="$x1" layoutX="14.0" layoutY="14.0" style="&#10;" text="Details" textAlignment="CENTER" fx:id="detailLabel"/>
           </children>
         </AnchorPane>
       </items>
