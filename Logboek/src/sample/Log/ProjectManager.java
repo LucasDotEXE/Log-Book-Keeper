@@ -4,9 +4,10 @@ import javafx.scene.layout.VBox;
 import sample.Controller;
 import sample.UIParser.UIParser;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 
-public class ProjectManager {
+public class ProjectManager implements Serializable {
 
     private ArrayList<Project> projects;
 
@@ -23,6 +24,4 @@ public class ProjectManager {
         this.projects.forEach(project -> list.getChildren().add(UIParser.parseProject(project, controller)));
         return list;
     }
-
-
 }

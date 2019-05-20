@@ -1,6 +1,7 @@
 package sample;
 
 import javafx.event.ActionEvent;
+import javafx.scene.Node;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
@@ -29,6 +30,7 @@ public class Controller {
     private ProjectManager projectManager;
 
     public MenuItem aboutAppButton;
+    public MenuItem refresh;
     public AnchorPane projectScreen;
     public AnchorPane sessionScreen;
     public AnchorPane detailScreen;
@@ -40,7 +42,12 @@ public class Controller {
 
 
     public Controller() {
-        this.projectManager = new ProjectManager();
+        if (SavingModual.loadSave() != null) {
+            this.projectManager = SavingModual.loadSave();
+        } else {
+            this.projectManager = new ProjectManager();
+        }
+        updateWindow();
     }
 
     public void showAboutApp(ActionEvent actionEvent) {
@@ -78,25 +85,30 @@ public class Controller {
             return;
         this.selectedProject.addSession(QueryWindow.askString("Session Name"));
         updateWindow();
+
     }
 
     public void updateWindow() {
-        this.projectScreen.getChildren().removeAll(this.projectScreen.getChildren());
-        VBox projectList = this.projectManager.getProjectListUIElemnt(this);
-        projectList.setLayoutX(14.0);
-        projectList.setLayoutY(48.0);
-        this.projectScreen.getChildren().addAll(this.projectLabel, this.addProjectButton, projectList);
+        if (projectScreen != null) {
+                this.projectScreen.getChildren().removeAll(this.projectScreen.getChildren());
+            VBox projectList = this.projectManager.getProjectListUIElemnt(this);
+            projectList.setLayoutX(14.0);
+            projectList.setLayoutY(48.0);
+            this.projectScreen.getChildren().addAll(this.projectLabel, this.addProjectButton, projectList);
 
-        if (selectedProject != null) {
-            this.sessionScreen.getChildren().removeAll(this.sessionScreen.getChildren());
-            VBox sessionList = this.selectedProject.getSessionListUIElement(this);
-            sessionList.setLayoutX(14.0);
-            sessionList.setLayoutY(48.0);
-            this.sessionScreen.getChildren().addAll(this.sessionLabel, this.addSessionButton, sessionList);
+            if (selectedProject != null) {
+                this.sessionScreen.getChildren().removeAll(this.sessionScreen.getChildren());
+                VBox sessionList = this.selectedProject.getSessionListUIElement(this);
+                sessionList.setLayoutX(14.0);
+                sessionList.setLayoutY(48.0);
+                this.sessionScreen.getChildren().addAll(this.sessionLabel, this.addSessionButton, sessionList);
+            }
         }
+
+        SavingModual.saveList(this.projectManager);
     }
 
-    public void setDetailScreen(VBox content) {
+    public void setDetailScreen(Node content) {
         this.detailScreen.getChildren().removeAll(this.detailScreen.getChildren());
         content.setLayoutX(14);
         content.setLayoutY(38);

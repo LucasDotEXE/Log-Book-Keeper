@@ -1,6 +1,7 @@
 package sample.UIParser;
 
 import java.time.LocalDateTime;
+import java.time.LocalTime;
 
 public class TimeParser {
         public static String dateTimeToString(LocalDateTime localDateTime) {
@@ -13,4 +14,12 @@ public class TimeParser {
             return time + localDateTime.getMinute();
 
         }
+
+    public static String timeToSting(LocalTime localTime) {
+        if (localTime == null) {
+            return "no time";
+        }
+        return localTime.minusNanos(localTime.getNano()).toString();
+
+    }
 }
